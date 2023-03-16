@@ -51,4 +51,4 @@ stages:
       inputs:
         azureSubscription: 'Free Trial(a238c2aa-03de-4ebe-8414-fbabd3c8d1ff)'
         appName: 'MavenWebapp1'
-        containers: 'myregistry.azurecr.io/onlineapplication/'
+        containers: '$(containerRegistry)/$(imageRepository):$(tag)'
