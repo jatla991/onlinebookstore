@@ -47,4 +47,4 @@ stages:
       inputs:
         azureSubscription: '$(azureSubscription)'
         appName: 'Estorewebapp'
-        containers: 'conreg0106.azurecr.io/$(repository):$(tag)')
+        containers: 'conreg0106.azurecr.io/$(repository):$(tag)'
