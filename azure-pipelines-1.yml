@@ -32,7 +32,7 @@ stages:
     - task: Docker@2
       displayName: Build an image
       inputs:
-        containerRegistry: 'Container registry service connection'
+        containerRegistry: 'ACR'
         repository: 'onlinestore'
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
