@@ -10,6 +10,10 @@ resources:
 
 variables:
   tag: '$(Build.BuildId)'
+  azureSubscription: 'Azure Service connection (pay-as-you-go)'
+  containerRegistry: 'ACR'
+  repository: 'onlinestore'
+
 
 stages:
 - stage: Build
@@ -32,8 +36,15 @@ stages:
     - task: Docker@2
       displayName: Build an image
       inputs:
-        containerRegistry: 'ACR'
-        repository: 'onlinestore'
+        containerRegistry: $(containerRegistry)
+        repository: $(repository)
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
         tags: '$(tag)'
+    
+
+    - task: AzureWebAppContainer@1
+      inputs:
+        azureSubscription: '$(azureSubscription)'
+        appName: 'Estorewebapp'
+        containers: 'conreg0106.azurecr.io/$(repository):$(tag)')
