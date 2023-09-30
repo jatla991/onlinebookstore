@@ -1,0 +1,27 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- J2EE
+
+pool:
+  vmImage: ubuntu-latest
+
+resources:
+ repositories:
+   - repository: Onlinebookstore
+     type: github
+     endpoint: My Project
+
+steps:
+  - template: build.yml@Common_templates
+    parameters:
+      buildType: 'java'
+      env: 'prod'
+  - template: build.yml@Common_templates
+    parameters:
+      buildType: 'java'
+      env: 'qa'
+      
