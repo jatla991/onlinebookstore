@@ -20,12 +20,5 @@ resources:
      name: Common_templates
 
 steps:
-  - template: build.yml@Common_templates
-    parameters:
-      buildType: 'java'
-      env: 'prod'
-  - template: build.yml@Common_templates
-    parameters:
-      buildType: 'java'
-      env: 'qa'
+  - checkout: Onlinebookstore
       
