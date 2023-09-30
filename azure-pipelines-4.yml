@@ -15,10 +15,34 @@ resources:
      type: github
      endpoint: My Project
      name: jatla991/onlinebookstore
+     ref: J2EE
    - repository: Common_templates
      type: git
      name: Common_templates
+   - repository: OnlinebookstoreMain
+     type: github
+     endpoint: My Project
+     name: jatla991/onlinebookstore
+     ref: main
 
-steps:
-  - checkout: Onlinebookstore
+stages:
+  - stage: 'J2EE'
+    jobs:
+      - job: 'buildofJ2EE'
+        steps:
+          - checkout: Onlinebookstore
+          - template: build.yml@Common_templates
+            parameters:
+              buildType: 'java'
+              env: 'prod'
+  
+  - stage: 'Main'
+    jobs:
+      - job: 'buildfromMain'
+        steps:
+          - checkout: OnlinebookstoreMain
+          - template: build.yml@Common_templates
+            parameters:
+              buildType: 'java'
+              env: 'qa'
       
