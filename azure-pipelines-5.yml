@@ -39,5 +39,5 @@ steps:
     azureSubscription: 'Pay-As-You-Go(5083e524-6907-48df-8508-9fa606d81016)'
     appType: 'webAppLinux'
     appName: 'onlinestore4461'
-    package: '$(Pipeline.Workspace)/onlinestore/**/target/*.?(war|jar)'
+    package: '$(Pipeline.Workspace)/onlinestore/target/*.?(war|jar)'
     runtimeStack: 'TOMCAT|9.0-java11'
