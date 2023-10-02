@@ -34,19 +34,10 @@ steps:
       ArtifactName: 'onlinestore'
       publishLocation: 'Container'
 
-
-- task: DownloadBuildArtifacts@1
-  inputs:
-    buildType: 'current'
-    downloadType: 'single'
-    artifactName: 'onlinestore'
-    itemPattern: '**/*.war'
-    downloadPath: '$(System.ArtifactsDirectory)'
-
 - task: AzureWebApp@1
   inputs:
     azureSubscription: 'Pay-As-You-Go(5083e524-6907-48df-8508-9fa606d81016)'
     appType: 'webAppLinux'
     appName: 'onlinestore4461'
-    package: '$(System.ArtifactsDirectory)/**/*.war'
+    package: '$(Pipeline.Workspace)/drop/**/target/*.?(war|jar)'
     runtimeStack: 'TOMCAT|9.0-java11'
